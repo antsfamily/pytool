@@ -36,3 +36,7 @@ def copyfile(srcfile, dstfile):
         dstfile {path str} -- [destination file]
     """
     shutil.copyfile(srcfile, dstfile)
+
+if __name__ == '__main__':
+    pass
+
