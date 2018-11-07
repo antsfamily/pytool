@@ -19,13 +19,15 @@ offsets = 60
 dtype = 'h'
 endian = 'Little'
 filename = '../data/data.bin'
+# filename = '../data/data2.bin'
 # filename = './data/data_REGV2.bin'
 
 mod = 'QIQI'
+# mod = 'IQIQ'
 
 A = pytool.loadbin(filename=filename, dtype=dtype, dbsize=dbsize, endian=endian, offsets=offsets, verbose=True)
-
-I1, Q1, I2, Q2 = pytool.parsedata(A, mod)
+print(A)
+I1, Q1, I2, Q2 = pytool.adcdata(A, mod)
 # print(I1)
 # print(Q1)
 

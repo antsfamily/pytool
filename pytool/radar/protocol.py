@@ -124,11 +124,13 @@ def parsing(Frame=None, endian='Little', SOF=None, EOF=None):
         adcmod = struct.unpack(endian + 'B', Frame['DATALOAD'][0:1])[0]
         for i in range(0, Frame['DATALEN']-1, 2):
         	# print(i, Frame['DATALEN'])
-        	data.append(struct.unpack(endian + 'H', Frame['DATALOAD'][i+1:i+3])[0])
+            # data.append(struct.unpack(endian + 'H', Frame['DATALOAD'][i+1:i+3])[0])
+        	data.append(struct.unpack(endian + 'h', Frame['DATALOAD'][i+1:i+3])[0])
         if adcmod is 0x13:
             data = pytool.adcdata(
                 data=data, mod='IQVIQV', verbose=False)
         if adcmod is 0x03:
+            # print(adcmod)
             data = pytool.adcdata(
                 data=data, mod='IQIQ', verbose=False)
-    return data
+    return data, adcmod
