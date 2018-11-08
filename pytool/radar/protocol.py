@@ -105,7 +105,7 @@ def unpack(data=None, dtype=None, endian='Little', SOF=None, EOF=None):
     Frame['DATALEN'] = struct.unpack(endian + 'H', data[14:16])[0]
     Frame['DATALOAD'] = data[16:-4]
     Frame['EOF'] = data[-4:]
-
+    # print(data)
     return Frame
 
 
@@ -119,6 +119,7 @@ def parsing(Frame=None, endian='Little', SOF=None, EOF=None):
     # print(Frame['DATATYPE'], type(Frame['DATALOAD'][0:1]))
     # print('========= %s.' % Frame['DATALOAD'][0:1])
     data = []
+    adcmod = []
 
     if Frame['DATATYPE'] is UPDT_ORIGECHO:
         adcmod = struct.unpack(endian + 'B', Frame['DATALOAD'][0:1])[0]
