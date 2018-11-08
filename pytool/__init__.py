@@ -20,6 +20,8 @@ from .radar.parse import adcdata
 from .radar.protocol import findfrm, unpack, parsing
 
 from .net.udp import udpbuild, udprecv, udpclose
+from .net.tcp import tcpsbuild, tcpcbuild, tcplink, tcprecv, tcpclose
+
 
 from .show.plot import aplot
 
