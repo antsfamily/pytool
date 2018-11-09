@@ -6,7 +6,7 @@
 # @Version : $1.0$
 import time
 import pytool
-from matplotlib import pyplot as plt
+from pytool.radar.protocol import UpDataType
 
 
 hostAddr = '192.168.31.104'
@@ -24,8 +24,8 @@ endian='Little'
 dtype = type(SOF)
 
 
-plt.ion()
-fig = plt.figure(0)
+# plt.ion()
+# fig = plt.figure(0)
 while True:
 	data, addr = pytool.udprecv(udps=udps, recvsize=20480)
 	# print('Received from %s:%s.' % addr)
@@ -35,33 +35,16 @@ while True:
 
 	s, idxHead, idxTail = pytool.findfrm(data, dtype=dtype, SOF=SOF, EOF=EOF)
 
-	print(type(data), s, idxHead, idxTail)
+	# print(type(data), s, idxHead, idxTail)
 	data = data[idxHead:idxTail+len(EOF)]
 
 	Frame = pytool.unpack(data=data, dtype=dtype, endian='Little', SOF=SOF, EOF=EOF)
-	IQV, adcmod = pytool.parsing(Frame=Frame, endian=endian, SOF=None, EOF=None)
 
-	# print(adcmod)
-	plt.clf()
-	if adcmod is 0x03:
-		plt.plot(IQV[0], '-r')
-		plt.plot(IQV[1], '-b')
-		plt.plot(IQV[2], '.-r')
-		plt.plot(IQV[3], '.-b')
-		plt.grid()
-		plt.title("echoes of radar")
-		plt.legend(['I1', 'Q1', 'I2', 'Q2'])
-	if adcmod is 0x13:
-		plt.plot(IQV[0], '-r')
-		plt.plot(IQV[1], '-b')
-		plt.plot(IQV[2], '-g')
-		plt.plot(IQV[3], '.-r')
-		plt.plot(IQV[4], '.-b')
-		plt.plot(IQV[5], '.-g')
-		plt.title("echoes of radar")
-		plt.legend(['I1', 'Q1', 'VGA1', 'I2', 'Q2', 'VGA2'])
-	plt.pause(0.0000001)
-	plt.ioff()
-
-
+	if Frame['DATATYPE'] is UpDataType['UPDT_TGINFO']:
+		targets, nTGs = pytool.parsing(Frame=Frame, endian=endian, SOF=None, EOF=None)
+		pytool.showtgs(targets)
+	if Frame['DATATYPE'] is UpDataType['UPDT_ORIGECHO']:
+		IQV, adcmod = pytool.parsing(Frame=Frame, endian=endian, SOF=None, EOF=None)
+		pytool.showiq(IQV, adcmod)
+		
 udpclose(udps)

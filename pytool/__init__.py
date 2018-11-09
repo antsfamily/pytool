@@ -18,6 +18,7 @@ from .math.rand import randperm
 
 from .radar.parse import adcdata
 from .radar.protocol import findfrm, unpack, parsing
+from .radar.show import showiq, showtgs
 
 from .net.udp import udpbuild, udprecv, udpclose
 from .net.tcp import tcpsbuild, tcpcbuild, tcplink, tcprecv, tcpclose

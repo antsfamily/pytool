@@ -39,7 +39,7 @@ while True:
 	data = data[idxHead:idxTail+len(EOF)]
 	print("========")
 	Frame = pytool.unpack(data=data, dtype=dtype, endian='Little', SOF=SOF, EOF=EOF)
-	IQV, adcmod = pytool.parsing(Frame=Frame, endian=endian, SOF=None, EOF=None)
+	IQV, adcmod = pytool.parsing(Frame=Frame, endian=endian, SOF=None, EOF=None, verbose=True)
 
 	# print(adcmod)
 	# plt.clf()
