@@ -39,8 +39,8 @@ while True:
 		s, idxHead, idxTail = pytool.findfrm(data, dtype=dtype, SOF=SOF, EOF=EOF)
 
 		print(type(data), s, idxHead, idxTail)
-		if s < 0 or idxHead < 0 or idxTail < 0:
-			print(data)
+		if s < 0:
+			# print(data)
 			print("Error frame!")
 			continue;
 		data = data[idxHead:idxTail+len(EOF)]

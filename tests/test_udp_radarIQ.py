@@ -32,7 +32,7 @@ while True:
 	# print('Received %s.' % data)
 	if dtype is 'str':
 		data = data.decode("utf-8")
-
+	# print(data)
 	s, idxHead, idxTail = pytool.findfrm(data, dtype=dtype, SOF=SOF, EOF=EOF)
 
 	# print(type(data), s, idxHead, idxTail)
@@ -46,5 +46,7 @@ while True:
 	if Frame['DATATYPE'] is UpDataType['UPDT_ORIGECHO']:
 		IQV, adcmod = pytool.parsing(Frame=Frame, endian=endian, SOF=None, EOF=None)
 		pytool.showiq(IQV, adcmod)
-		
+	if Frame['DATATYPE'] is UpDataType['UPDT_ANALYSIS']:
+		mti, cfarth = pytool.parsing(Frame=Frame, endian=endian, SOF=None, EOF=None)
+		pytool.showana(mti, cfarth)
 udpclose(udps)

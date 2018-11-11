@@ -19,6 +19,7 @@ def udpbuild(hostAddr=None, port=None):
 
 	# build IPv4, UDP socket
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	# s.close()
 	# bind port
 	s.bind((hostAddr, port))
 	print('Bind UDP on port ', port)
