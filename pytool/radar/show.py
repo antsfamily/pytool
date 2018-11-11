@@ -29,9 +29,18 @@ def showiq(IQV, adcmod=None):
         plt.plot(IQV[5], '.-g')
         plt.title("echoes of radar")
         plt.legend(['I1', 'Q1', 'VGA1', 'I2', 'Q2', 'VGA2'])
-    plt.pause(0.0000001)
+    plt.pause(0.00000001)
     plt.ioff()
 
+
+def showana(mti, cfarth):
+    plt.clf()
+    plt.plot(cfarth, '-r')
+    plt.plot(mti, '-b')
+    plt.grid()
+    plt.legend(['TH of CFAR', 'abs(MTI)'])
+    plt.pause(0.00000001)
+    plt.ioff()
 
 def showtgs(tgs):
     """show targets

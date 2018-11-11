@@ -56,6 +56,7 @@ Target = {
     's': -1,
 }
 
+
 def findfrm(RxData=None, dtype=None, SOF=None, EOF=None):
 
     if dtype is None:
@@ -94,6 +95,11 @@ def findfrm(RxData=None, dtype=None, SOF=None, EOF=None):
         s = -1
         idxTail = -1
 
+    if s < 0 or idxHead < 0 or idxTail < 0:
+        s = -1
+    if idxTail < idxHead:
+        s = -2
+
     return s, idxHead, idxTail
 
 
@@ -103,6 +109,11 @@ def unpack(data=None, dtype=None, endian='Little', SOF=None, EOF=None):
         endian = '<'
     if endian is 'Big':
         endian = '>'
+    # print(data, type(data), len(data))
+    # print(data)
+    if data is None or len(data) is 0:
+        print("no data!")
+        return
 
     Frame['SOF'] = data[0:2]
     Frame['FRAMETYPE'] = struct.unpack(endian + 'B', data[2:3])[0]
@@ -124,14 +135,21 @@ def parsing(Frame=None, endian='Little', SOF=None, EOF=None, verbose=None):
         endian = '<'
     if endian is 'Big':
         endian = '>'
+    if Frame is None:
+        print("no frame")
+        return
 
     if Frame['DATATYPE'] is UpDataType['UPDT_ORIGECHO']:
         data = []
         adcmod = struct.unpack(endian + 'B', Frame['DATALOAD'][0:1])[0]
-        for i in range(0, Frame['DATALEN']-1, 2):
+        vMax = struct.unpack(endian + 'h', Frame['DATALOAD'][1:3])[0]
+        vMin = struct.unpack(endian + 'h', Frame['DATALOAD'][3:5])[0]
+        print("vMax, vMin", vMax, vMin)
+        # for i in range(1, Frame['DATALEN'], 2):
+        for i in range(5, Frame['DATALEN'], 2):
             # print(i, Frame['DATALEN'])
-            # data.append(struct.unpack(endian + 'H', Frame['DATALOAD'][i+1:i+3])[0])
-            data.append(struct.unpack(endian + 'h', Frame['DATALOAD'][i+1:i+3])[0])
+            data.append(
+                struct.unpack(endian + 'h', Frame['DATALOAD'][i:i + 2])[0])
         if adcmod is 0x13:
             data = pytool.adcdata(
                 data=data, mod='IQVIQV', verbose=False)
@@ -139,20 +157,37 @@ def parsing(Frame=None, endian='Little', SOF=None, EOF=None, verbose=None):
             # print(adcmod)
             data = pytool.adcdata(
                 data=data, mod='IQIQ', verbose=False)
+        print("dMax, dMin", max(data[0] + data[1]), min(data[3] + data[4]))
         return data, adcmod
-        
+
     if Frame['DATATYPE'] is UpDataType['UPDT_TGINFO']:
         targets = []
         nTGs = struct.unpack(endian + 'B', Frame['DATALOAD'][0:1])[0]
         tg = {'r': -1, 'a': 3.4e38, 'v': 3.4e38, 's': -1}
         for i in range(0, nTGs, 1):
-            tg['r'] = struct.unpack(endian + 'f', Frame['DATALOAD'][16*i+1:16*i+5])[0]
-            tg['v'] = struct.unpack(endian + 'f', Frame['DATALOAD'][16*i+5:16*i+9])[0]
-            tg['a'] = struct.unpack(endian + 'f', Frame['DATALOAD'][16*i+9:16*i+13])[0]
-            tg['s'] = struct.unpack(endian + 'f', Frame['DATALOAD'][16*i+13:16*i+17])[0]
+            tg['r'] = struct.unpack(
+                endian + 'f', Frame['DATALOAD'][16 * i + 1:16 * i + 5])[0]
+            tg['v'] = struct.unpack(
+                endian + 'f', Frame['DATALOAD'][16 * i + 5:16 * i + 9])[0]
+            tg['a'] = struct.unpack(
+                endian + 'f', Frame['DATALOAD'][16 * i + 9:16 * i + 13])[0]
+            tg['s'] = struct.unpack(
+                endian + 'f', Frame['DATALOAD'][16 * i + 13:16 * i + 17])[0]
             targets.append(tg)
 
         if verbose:
             pytool.showtgs(targets)
         return targets, nTGs
 
+    if Frame['DATATYPE'] is UpDataType['UPDT_ANALYSIS']:
+        cfarth = []
+        mti = []
+        for i in range(0, int(Frame['DATALEN'] / 2), 4):
+            # print(i, Frame['DATALEN'])
+            # data.append(struct.unpack(endian + 'H', Frame['DATALOAD'][i+1:i+3])[0])
+            mti.append(
+                struct.unpack(endian + 'f', Frame['DATALOAD'][i:i + 4])[0])
+        for i in range(int(Frame['DATALEN'] / 2), Frame['DATALEN'], 4):
+            cfarth.append(
+                struct.unpack(endian + 'f', Frame['DATALOAD'][i:i + 4])[0])
+        return mti, cfarth
