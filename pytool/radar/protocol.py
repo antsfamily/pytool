@@ -59,7 +59,7 @@ Target = {
 
 def findfrm(RxData=None, dtype=None, SOF=None, EOF=None, verbose=False):
 
-    if RxData is None:
+    if RxData is None or len(RxData) is 0:
         return -1, -1, -1
     if dtype is None:
         dtype = 'bytes'
@@ -115,6 +115,7 @@ def unpack(data=None, dtype=None, endian='Little', SOF=None, EOF=None, verbose=F
     # print(data)
     if data is None or len(data) is 0:
         if verbose is True:
+            print(data)
             print("no data!")
         return None
     try:
@@ -134,7 +135,8 @@ def unpack(data=None, dtype=None, endian='Little', SOF=None, EOF=None, verbose=F
         return None
     if len(Frame['DATALOAD']) != Frame['DATALEN']:
         if verbose is True:
-            print("len(data), len(Frame['DATALOAD']), Frame['DATALEN']", len(data), len(Frame['DATALOAD']), Frame['DATALEN'], data[14:16])
+            print("len(data), len(Frame['DATALOAD']), Frame['DATALEN']", len(
+                data), len(Frame['DATALOAD']), Frame['DATALEN'], data[14:16])
             print("Frame error!")
         return None
     return Frame
@@ -155,10 +157,13 @@ def parsing(Frame=None, endian='Little', SOF=None, EOF=None, verbose=False):
         data = []
         adcmod = struct.unpack(endian + 'B', Frame['DATALOAD'][0:1])[0]
         try:
-            for i in range(1, Frame['DATALEN']-1, 2):
+            for i in range(1, Frame['DATALEN'] - 1, 2):
                 # print(i, Frame['DATALEN'], Frame['DATALOAD'][i:i + 2], Frame['DATALOAD'][i:i + 6])
-                # data.append(struct.unpack(endian + 'h', Frame['DATALOAD'][i:i + 2])[0]) ## short
-                data.append(struct.unpack(endian + 'H', Frame['DATALOAD'][i:i + 2])[0]) ## ushort
+                # data.append(struct.unpack(endian + 'h', Frame['DATALOAD'][i:i
+                # + 2])[0]) ## short
+                # ushort
+                data.append(
+                    struct.unpack(endian + 'H', Frame['DATALOAD'][i:i + 2])[0])
         except:
             if verbose is True:
                 print("error frame!")
@@ -190,6 +195,27 @@ def parsing(Frame=None, endian='Little', SOF=None, EOF=None, verbose=False):
         if verbose:
             pytool.showtgs(targets)
         return targets, nTGs
+
+    if Frame['DATATYPE'] is UpDataType['UPDT_TGECHO']:
+        tgecho1 = []
+        tgecho2 = []
+        for i in range(0, int(Frame['DATALEN'] / 2), 4):
+            # print(i, Frame['DATALEN'])
+            tgecho1.append(
+                struct.unpack(endian + 'f', Frame['DATALOAD'][i:i + 4])[0])
+        for i in range(int(Frame['DATALEN'] / 2), int(Frame['DATALEN']), 4):
+            # print(i, Frame['DATALEN'])
+            tgecho2.append(
+                struct.unpack(endian + 'f', Frame['DATALOAD'][i:i + 4])[0])
+        return tgecho1, tgecho2
+
+    if Frame['DATATYPE'] is UpDataType['UPDT_DECISION']:
+        mti = []
+        for i in range(0, int(Frame['DATALEN']), 4):
+            # print(i, Frame['DATALEN'])
+            mti.append(
+                struct.unpack(endian + 'f', Frame['DATALOAD'][i:i + 4])[0])
+        return mti
 
     if Frame['DATATYPE'] is UpDataType['UPDT_ANALYSIS']:
         cfarth = []
