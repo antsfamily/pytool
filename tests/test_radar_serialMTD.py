@@ -5,13 +5,14 @@
 # @Link    : http://blog.csdn.net/enjoyyl
 # @Version : $1.0$
 
+import numpy as np
 import pytool
 from pytool.radar.protocol import UpDataType
 
 com = 'COM7'
 baudrate = 1050000
-timeout = 0.00001
-timesleep = 0.0000001
+timeout = 0.001
+timesleep = 0.0001
 
 
 SOF = b'$$'
@@ -25,6 +26,12 @@ dtype = type(SOF)
 # plt.ion()
 # fig = plt.figure(0)
 serial = pytool.serialopen(com=com, baudrate=baudrate, timeout=timeout)
+
+cnt = 0
+FIR_LEN_MTI = 65
+
+mtd = np.zeros((FIR_LEN_MTI, 256))
+
 while True:
     data = pytool.serialread(serial, size=None, timesleep=timesleep)
     if dtype is 'str':
@@ -38,21 +45,30 @@ while True:
     # print(type(data), len(data), idxHead, idxTail)
 
     Frame = pytool.unpack(
-        data=data, dtype=dtype, endian='Little', SOF=SOF, EOF=EOF)
+        data=data, dtype=dtype, endian='Little', SOF=SOF, EOF=EOF, verbose=True)
 
     if Frame is None:
-    	continue
+        continue
 
-    if Frame['DATATYPE'] is UpDataType['UPDT_TGINFO']:
-        targets, nTGs = pytool.parsing(
-            Frame=Frame, endian=endian, SOF=None, EOF=None)
-        pytool.showtgs(targets)
     if Frame['DATATYPE'] is UpDataType['UPDT_ORIGECHO']:
         IQV, adcmod = pytool.parsing(
             Frame=Frame, endian=endian, SOF=None, EOF=None)
-        pytool.showiq(IQV, adcmod)
-    if Frame['DATATYPE'] is UpDataType['UPDT_ANALYSIS']:
-        mti, cfarth = pytool.parsing(
-            Frame=Frame, endian=endian, SOF=None, EOF=None)
-        pytool.showana(mti, cfarth)
+        if IQV is None:
+            print("IIIIIIIIIIIIIi")
+            continue
+        IQV = np.array(IQV)
+        x1 = IQV[0] + 1j * IQV[1]
+        y1 = np.fft.fft(x1)
+        x2 = IQV[3] + 1j * IQV[4]
+        y2 = np.fft.fft(x2)
+        print(cnt)
+        mtd[cnt, :] = x1
+        if cnt < FIR_LEN_MTI-1:
+            cnt = cnt + 1
+        else:
+            cnt = 0
+            # mtd = np.abs(np.fft.fft2(mtd))
+            pytool.showmtd(mtd, verbose=True)
+
+
 pytool.serialclose(serial)

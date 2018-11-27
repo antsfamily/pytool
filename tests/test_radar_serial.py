@@ -10,8 +10,8 @@ from pytool.radar.protocol import UpDataType
 
 com = 'COM7'
 baudrate = 1050000
-timeout = 0.000000001
-timesleep = 0.0000001
+timeout = 0.001
+timesleep = 0.0001
 
 
 SOF = b'$$'
@@ -51,6 +51,10 @@ while True:
         IQV, adcmod = pytool.parsing(
             Frame=Frame, endian=endian, SOF=None, EOF=None)
         pytool.showiq(IQV, adcmod)
+    if Frame['DATATYPE'] is UpDataType['UPDT_TGECHO']:
+        tgecho1, tgecho2 = pytool.parsing(
+            Frame=Frame, endian=endian, SOF=None, EOF=None)
+        pytool.showtgecho(tgecho1, tgecho2)
     if Frame['DATATYPE'] is UpDataType['UPDT_ANALYSIS']:
         mti, cfarth = pytool.parsing(
             Frame=Frame, endian=endian, SOF=None, EOF=None)
