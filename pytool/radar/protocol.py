@@ -57,8 +57,10 @@ Target = {
 }
 
 
-def findfrm(RxData=None, dtype=None, SOF=None, EOF=None):
+def findfrm(RxData=None, dtype=None, SOF=None, EOF=None, verbose=False):
 
+    if RxData is None:
+        return -1, -1, -1
     if dtype is None:
         dtype = 'bytes'
 
@@ -76,9 +78,9 @@ def findfrm(RxData=None, dtype=None, SOF=None, EOF=None):
             EOF = '####'
 
     # print("data type: ", dtype, "SOF: ", SOF, "EOF: ", EOF)
-    print("unpacking ...")
+    if verbose is True:
+        print("unpacking ...")
     lenRXs = len(RxData)
-    # print('lenRXs: ', lenRXs)
 
     s = 2
 
@@ -103,7 +105,7 @@ def findfrm(RxData=None, dtype=None, SOF=None, EOF=None):
     return s, idxHead, idxTail
 
 
-def unpack(data=None, dtype=None, endian='Little', SOF=None, EOF=None):
+def unpack(data=None, dtype=None, endian='Little', SOF=None, EOF=None, verbose=False):
 
     if endian is 'Little':
         endian = '<'
@@ -112,44 +114,55 @@ def unpack(data=None, dtype=None, endian='Little', SOF=None, EOF=None):
     # print(data, type(data), len(data))
     # print(data)
     if data is None or len(data) is 0:
-        print("no data!")
-        return
-
-    Frame['SOF'] = data[0:2]
-    Frame['FRAMETYPE'] = struct.unpack(endian + 'B', data[2:3])[0]
-    Frame['DEVID'] = struct.unpack(endian + 'B', data[3:4])[0]
-    Frame['WORKMODE'] = struct.unpack(endian + 'B', data[4:5])[0]
-    Frame['DATATYPE'] = struct.unpack(endian + 'H', data[6:8])[0]
-    Frame['SOS'] = struct.unpack(endian + 'H', data[8:10])[0]
-    Frame['EOS'] = struct.unpack(endian + 'H', data[10:12])[0]
-    Frame['DATALEN'] = struct.unpack(endian + 'H', data[14:16])[0]
-    Frame['DATALOAD'] = data[16:-4]
-    Frame['EOF'] = data[-4:]
-    # print(data)
+        if verbose is True:
+            print("no data!")
+        return None
+    try:
+        Frame['SOF'] = data[0:2]
+        Frame['FRAMETYPE'] = struct.unpack(endian + 'B', data[2:3])[0]
+        Frame['DEVID'] = struct.unpack(endian + 'B', data[3:4])[0]
+        Frame['WORKMODE'] = struct.unpack(endian + 'B', data[4:5])[0]
+        Frame['DATATYPE'] = struct.unpack(endian + 'H', data[6:8])[0]
+        Frame['SOS'] = struct.unpack(endian + 'H', data[8:10])[0]
+        Frame['EOS'] = struct.unpack(endian + 'H', data[10:12])[0]
+        Frame['DATALEN'] = struct.unpack(endian + 'H', data[14:16])[0]
+        Frame['DATALOAD'] = data[16:-4]
+        Frame['EOF'] = data[-4:]
+    except:
+        if verbose is True:
+            print("Frame error!")
+        return None
+    if len(Frame['DATALOAD']) != Frame['DATALEN']:
+        if verbose is True:
+            print("len(data), len(Frame['DATALOAD']), Frame['DATALEN']", len(data), len(Frame['DATALOAD']), Frame['DATALEN'], data[14:16])
+            print("Frame error!")
+        return None
     return Frame
 
 
-def parsing(Frame=None, endian='Little', SOF=None, EOF=None, verbose=None):
+def parsing(Frame=None, endian='Little', SOF=None, EOF=None, verbose=False):
 
     if endian is 'Little':
         endian = '<'
     if endian is 'Big':
         endian = '>'
     if Frame is None:
-        print("no frame")
+        if verbose is True:
+            print("no frame")
         return
 
     if Frame['DATATYPE'] is UpDataType['UPDT_ORIGECHO']:
         data = []
         adcmod = struct.unpack(endian + 'B', Frame['DATALOAD'][0:1])[0]
-        vMax = struct.unpack(endian + 'h', Frame['DATALOAD'][1:3])[0]
-        vMin = struct.unpack(endian + 'h', Frame['DATALOAD'][3:5])[0]
-        print("vMax, vMin", vMax, vMin)
-        # for i in range(1, Frame['DATALEN'], 2):
-        for i in range(5, Frame['DATALEN'], 2):
-            # print(i, Frame['DATALEN'])
-            data.append(
-                struct.unpack(endian + 'h', Frame['DATALOAD'][i:i + 2])[0])
+        try:
+            for i in range(1, Frame['DATALEN']-1, 2):
+                # print(i, Frame['DATALEN'], Frame['DATALOAD'][i:i + 2], Frame['DATALOAD'][i:i + 6])
+                # data.append(struct.unpack(endian + 'h', Frame['DATALOAD'][i:i + 2])[0]) ## short
+                data.append(struct.unpack(endian + 'H', Frame['DATALOAD'][i:i + 2])[0]) ## ushort
+        except:
+            if verbose is True:
+                print("error frame!")
+            return None, None
         if adcmod is 0x13:
             data = pytool.adcdata(
                 data=data, mod='IQVIQV', verbose=False)
@@ -157,7 +170,6 @@ def parsing(Frame=None, endian='Little', SOF=None, EOF=None, verbose=None):
             # print(adcmod)
             data = pytool.adcdata(
                 data=data, mod='IQIQ', verbose=False)
-        print("dMax, dMin", max(data[0] + data[1]), min(data[3] + data[4]))
         return data, adcmod
 
     if Frame['DATATYPE'] is UpDataType['UPDT_TGINFO']:
