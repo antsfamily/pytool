@@ -25,7 +25,9 @@ from .comm.udp import udpbuild, udprecv, udpclose
 from .comm.tcp import tcpsbuild, tcpcbuild, tcplink, tcprecv, tcpclose
 from .comm.seri import serialopen, serialread, serialwrite, serialclose
 
+from .nn.activations import linear, sigmoid, tanh, softplus, softsign, elu, relu, relu6, selu, crelu, leaky_relu
 
 from .show.plot import aplot, mesh
+from .show.vectors import plot_vectors
 
 
