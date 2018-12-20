@@ -16,6 +16,11 @@ from .box.draw import drawbox
 from . import math
 from .math.rand import randperm
 
+from .math.geometry.generate import circle1, circle2, ellipse, ellipse_surface
+
+
+
+
 from .radar.parse import adcdata
 from .radar.protocol import findfrm, unpack, parsing
 from .radar.show import showiq, showtgecho, showmti, showana, showmtd, showtgs
@@ -28,6 +33,6 @@ from .comm.seri import serialopen, serialread, serialwrite, serialclose
 from .nn.activations import linear, sigmoid, tanh, softplus, softsign, elu, relu, relu6, selu, crelu, leaky_relu
 
 from .show.plot import aplot, mesh
-from .show.vectors import plot_vectors
+from .show.vectors import plot_vectors2d
 
 
