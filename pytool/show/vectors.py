@@ -11,6 +11,20 @@ from matplotlib import pyplot as plt
 
 
 def plot_vectors2d(vectors, xse=None, yse=None, nPoints=None, title=None, colorlines=None):
+    """2d vectors Visualization
+
+    plot 2d vectors
+
+    Arguments:
+        vectors {lists} -- [[vector1], [vector2], ...]
+
+    Keyword Arguments:
+        xse {list} -- start and end of x (default: {None})
+        yse {list} -- start and end of y (default: {None})
+        nPoints {integer} -- number of points for plotting (default: {None})
+        title {string} -- figure title (default: {None})
+        colorlines {list} -- such as ['-r', '-b'] (default: {None})
+    """
 
     if nPoints is None:
         for vector, colorline in zip(vectors, colorlines):

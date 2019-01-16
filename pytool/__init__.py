@@ -18,6 +18,7 @@ from .math.rand import randperm
 
 from .math.geometry.generate import circle1, circle2, ellipse, ellipse_surface
 
+from .math.matrix.eigen import gerschgorin
 
 
 
@@ -34,5 +35,6 @@ from .nn.activations import linear, sigmoid, tanh, softplus, softsign, elu, relu
 
 from .show.plot import aplot, mesh
 from .show.vectors import plot_vectors2d
+from .show.geometry import plot_circles
 
 
