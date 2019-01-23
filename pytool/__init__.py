@@ -31,6 +31,12 @@ from .comm.udp import udpbuild, udprecv, udpclose
 from .comm.tcp import tcpsbuild, tcpcbuild, tcplink, tcprecv, tcpclose
 from .comm.seri import serialopen, serialread, serialwrite, serialclose
 
+
+from . import datasets
+from .datasets.mnist import read_mnist
+from .datasets.batches import get_batches
+
+from . import nn
 from .nn.activations import linear, sigmoid, tanh, softplus, softsign, elu, relu, relu6, selu, crelu, leaky_relu
 
 from .show.plot import aplot, mesh
