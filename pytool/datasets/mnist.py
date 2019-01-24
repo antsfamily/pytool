@@ -19,8 +19,8 @@ def read_mnist(rootdir=None, dataset='train', scale=False, isonehot=False, verbo
     print("reading dataset: " + dataset + "...")
     X = []
     Y = []
-    if os.path.exists(rootdir + dataset) is False:
-        ValueError(rootdir + dataset, " is not exist!")
+    if ~os.path.exists(os.path.join(rootdir, dataset)):
+        raise ValueError(rootdir + dataset + " is not exist!")
     for parent, dirnames, filenames in os.walk(rootdir + dataset):
         if cnt == -1:
             labels = dirnames
@@ -64,5 +64,3 @@ if __name__ == '__main__':
     rootdir = '../../data/mnist/'
     dataset = 'demo'
     read_mnist(rootdir=rootdir, dataset=dataset, isonehot=True, verbose=True)
-
-

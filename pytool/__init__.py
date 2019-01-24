@@ -34,7 +34,7 @@ from .comm.seri import serialopen, serialread, serialwrite, serialclose
 
 from . import datasets
 from .datasets.mnist import read_mnist
-from .datasets.batches import get_batches
+from .datasets.batch import get_batches
 
 from . import nn
 from .nn.activations import linear, sigmoid, tanh, softplus, softsign, elu, relu, relu6, selu, crelu, leaky_relu
