@@ -21,6 +21,15 @@ from .math.geometry.generate import circle1, circle2, ellipse, ellipse_surface
 from .math.matrix.eigen import gerschgorin
 
 
+from . import signal
+
+from .signal import signal
+from .signal.signal.correlation import corrmtx
+
+from .signal import spectral
+from .signal.spectral.music import music, computeeig, music_options, determine_signal_space
+from .signal.spectral.pmusic import pmusic, pseudospectrum, computespectrumrange
+
 
 from .radar.parse import adcdata
 from .radar.protocol import findfrm, unpack, parsing
@@ -42,5 +51,3 @@ from .nn.activations import linear, sigmoid, tanh, softplus, softsign, elu, relu
 from .show.plot import aplot, mesh
 from .show.vectors import plot_vectors2d
 from .show.geometry import plot_circles
-
-
