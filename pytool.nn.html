@@ -1,0 +1,482 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pytool.nn package &mdash; PyTool 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PyTool 1.0 documentation" href="index.html"/>
+        <link rel="up" title="pytool package" href="pytool.html"/>
+        <link rel="next" title="pytool.radar package" href="pytool.radar.html"/>
+        <link rel="prev" title="pytool.math package" href="pytool.math.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyTool
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pytool</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pytool.html">pytool package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pytool.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pytool.box.html">pytool.box package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.comm.html">pytool.comm package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.file.html">pytool.file package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.math.html">pytool.math package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pytool.nn package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.radar.html">pytool.radar package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.show.html">pytool.show package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pytool.html#module-pytool">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyTool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">pytool</a> &raquo;</li>
+        
+          <li><a href="pytool.html">pytool package</a> &raquo;</li>
+        
+      <li>pytool.nn package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pytool.nn.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pytool-nn-package">
+<h1>pytool.nn package<a class="headerlink" href="#pytool-nn-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pytool.nn.activations">
+<span id="pytool-nn-activations-module"></span><h2>pytool.nn.activations module<a class="headerlink" href="#module-pytool.nn.activations" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytool.nn.activations.crelu">
+<code class="descclassname">pytool.nn.activations.</code><code class="descname">crelu</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.nn.activations.crelu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes Concatenated ReLU.</p>
+<p>Concatenates a ReLU which selects only the positive part of the activation
+with a ReLU which selects only the <em>negative</em> part of the activation.
+Note that as a result this non-linearity doubles the depth of the activations.
+Source: <a class="reference external" href="https://arxiv.org/abs/1603.05201">Understanding and Improving Convolutional Neural Networks via
+Concatenated Rectified Linear Units. W. Shang, et
+al.</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array – outputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytool.nn.activations.elu">
+<code class="descclassname">pytool.nn.activations.</code><code class="descname">elu</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.nn.activations.elu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes exponential linear element-wise. exp(x) - 1` if x &lt; 0, <cite>x</cite> otherwise</p>
+<div class="math">
+\[\begin{split}y = \left\{ {\begin{array}{*{20}{c}}{x,\;\;\;\;\;\;\;\;\;x \ge 0}\\{{e^x} - 1,\;\;\;x &lt; 0}\end{array}} \right..\end{split}\]</div>
+<p>See  <a class="reference external" href="http://arxiv.org/abs/1511.07289">Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array – outputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytool.nn.activations.leaky_relu">
+<code class="descclassname">pytool.nn.activations.</code><code class="descname">leaky_relu</code><span class="sig-paren">(</span><em>x</em>, <em>alpha=0.2</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.nn.activations.leaky_relu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the Leaky ReLU activation function.</p>
+<p><span class="math">\(y = \left\{ {\begin{array}{*{20}{c}}{x,\;\;\;\;\;\;x \ge 0}\\{\alpha x,\;\;\;x &lt; 0}\end{array}} \right.\)</span></p>
+<p><a class="reference external" href="http://web.stanford.edu/~awni/papers/relu_hybrid_icml2013_final.pdf">Rectifier Nonlinearities Improve Neural Network Acoustic Models</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array – outputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytool.nn.activations.linear">
+<code class="descclassname">pytool.nn.activations.</code><code class="descname">linear</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.nn.activations.linear" title="Permalink to this definition">¶</a></dt>
+<dd><p>linear activation</p>
+<p><span class="math">\(y = x\)</span></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array – outputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytool.nn.activations.relu">
+<code class="descclassname">pytool.nn.activations.</code><code class="descname">relu</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.nn.activations.relu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes rectified linear: <cite>max(x, 0)</cite>.</p>
+<p><span class="math">\({\rm max}(x, 0)\)</span></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array – outputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytool.nn.activations.relu6">
+<code class="descclassname">pytool.nn.activations.</code><code class="descname">relu6</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.nn.activations.relu6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes Rectified Linear 6: <cite>min(max(x, 0), 6)</cite>.</p>
+<p><span class="math">\({\rm min}({\rm max}(x, 0), 6)\)</span></p>
+<p><a class="reference external" href="http://www.cs.utoronto.ca/~kriz/conv-cifar10-aug2010.pdf">Convolutional Deep Belief Networks on CIFAR-10. A. Krizhevsky</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array – outputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytool.nn.activations.selu">
+<code class="descclassname">pytool.nn.activations.</code><code class="descname">selu</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.nn.activations.selu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes scaled exponential linear: <cite>scale * alpha * (exp(x) - 1)</cite> if &lt; 0, <cite>scale * x</cite> otherwise.</p>
+<div class="math">
+\[\begin{split}y = \lambda \left\{ {\begin{array}{*{20}{c}}{x,\;\;\;\;\;\;\;\;\;\;\;\;\;x \ge 0}\\{\alpha ({e^x} - 1),\;\;\;\;x &lt; 0}\end{array}} \right.\end{split}\]</div>
+<p>where, <span class="math">\(\alpha = 1.6732632423543772848170429916717\)</span> , <span class="math">\(\lambda = 1.0507009873554804934193349852946\)</span></p>
+<p>See <a class="reference external" href="https://arxiv.org/abs/1706.02515">Self-Normalizing Neural Networks</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array – outputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytool.nn.activations.sigmoid">
+<code class="descclassname">pytool.nn.activations.</code><code class="descname">sigmoid</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.nn.activations.sigmoid" title="Permalink to this definition">¶</a></dt>
+<dd><p>sigmoid function</p>
+<div class="math">
+\[y = \frac{e^x}{e^x + 1}\]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array – outputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytool.nn.activations.softplus">
+<code class="descclassname">pytool.nn.activations.</code><code class="descname">softplus</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.nn.activations.softplus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes softplus: <cite>log(exp(x) + 1)</cite>.</p>
+<p><span class="math">\({\rm log}(e^x + 1)\)</span></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array – outputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytool.nn.activations.softsign">
+<code class="descclassname">pytool.nn.activations.</code><code class="descname">softsign</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.nn.activations.softsign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes softsign: <cite>x / (abs(x) + 1)</cite>.</p>
+<p><span class="math">\(\frac{x} {({\rm abs}(x) + 1)}\)</span></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array – outputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytool.nn.activations.swish">
+<code class="descclassname">pytool.nn.activations.</code><code class="descname">swish</code><span class="sig-paren">(</span><em>x</em>, <em>beta=1.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.nn.activations.swish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Swish activation function: <cite>x * sigmoid(beta*x)</cite>.</p>
+<p><span class="math">\(y = x\cdot {\rm sigmoid}(\beta x) = {e^{(\beta x)} \over {e^{(\beta x)} + 1}} \cdot x\)</span></p>
+<p>See <a class="reference external" href="https://arxiv.org/abs/1710.05941">“Searching for Activation Functions” (Ramachandran et al. 2017)</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array – outputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytool.nn.activations.tanh">
+<code class="descclassname">pytool.nn.activations.</code><code class="descname">tanh</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.nn.activations.tanh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes tanh of <cite>x</cite> element-wise.</p>
+<p>Specifically</p>
+<div class="math">
+\[y = {\rm tanh}(x) = {{e^{2x} - 1} \over {e^{2x} + 1}}.\]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{lists</strong><strong> or </strong><strong>array} -- inputs</strong> (<em>x</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array – outputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytool.nn">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pytool.nn" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pytool.radar.html" class="btn btn-neutral float-right" title="pytool.radar package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pytool.math.html" class="btn btn-neutral" title="pytool.math package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zhi Liu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

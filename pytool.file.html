@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pytool.file package &mdash; PyTool 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PyTool 1.0 documentation" href="index.html"/>
+        <link rel="up" title="pytool package" href="pytool.html"/>
+        <link rel="next" title="pytool.math package" href="pytool.math.html"/>
+        <link rel="prev" title="pytool.comm package" href="pytool.comm.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyTool
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pytool</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pytool.html">pytool package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pytool.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pytool.box.html">pytool.box package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.comm.html">pytool.comm package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pytool.file package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.math.html">pytool.math package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.nn.html">pytool.nn package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.radar.html">pytool.radar package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.show.html">pytool.show package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pytool.html#module-pytool">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyTool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">pytool</a> &raquo;</li>
+        
+          <li><a href="pytool.html">pytool package</a> &raquo;</li>
+        
+      <li>pytool.file package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pytool.file.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pytool-file-package">
+<h1>pytool.file package<a class="headerlink" href="#pytool-file-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pytool.file.binfile">
+<span id="pytool-file-binfile-module"></span><h2>pytool.file.binfile module<a class="headerlink" href="#module-pytool.file.binfile" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytool.file.binfile.loadbin">
+<code class="descclassname">pytool.file.binfile.</code><code class="descname">loadbin</code><span class="sig-paren">(</span><em>filename=None</em>, <em>dtype='i'</em>, <em>dbsize=4</em>, <em>endian='Little'</em>, <em>offsets=0</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.file.binfile.loadbin" title="Permalink to this definition">¶</a></dt>
+<dd><p>[load binary file]</p>
+<p>[load binary file]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>{str} --</strong><strong> [</strong><strong>description</strong><strong>] </strong><strong>(</strong><strong>default</strong> (<em>filename</em>) – {None})</li>
+<li><strong>{str} --</strong><strong> [</strong><strong>c</strong> (<em>dtype</em>) – char, b:schar, B:uchar, h:short, H:ushort,
+i:int, I:uint, l:long, L:ulong, q:longlong],
+Q:ulonglong, f:float, d:double, s:char[],
+p:char[], P:void* (default: {‘i’})</li>
+<li><strong>{number} --</strong><strong> [</strong><strong>bits of per number</strong><strong>] </strong><strong>(</strong><strong>default</strong> (<em>dbsize</em>) – {4})</li>
+<li><strong>{number} --</strong><strong> [</strong><strong>offsets index</strong><strong>] </strong><strong>(</strong><strong>default</strong> (<em>offsets</em>) – {0})</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytool.file.copy">
+<span id="pytool-file-copy-module"></span><h2>pytool.file.copy module<a class="headerlink" href="#module-pytool.file.copy" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytool.file.copy.copyfile">
+<code class="descclassname">pytool.file.copy.</code><code class="descname">copyfile</code><span class="sig-paren">(</span><em>srcfile</em>, <em>dstfile</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.file.copy.copyfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>copy file from srcfile to dstfile</p>
+<p>copy file from srcfile to dstfile.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>{path str} --</strong><strong> [</strong><strong>source file</strong><strong>]</strong> (<em>srcfile</em>) – </li>
+<li><strong>{path str} --</strong><strong> [</strong><strong>destination file</strong><strong>]</strong> (<em>dstfile</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytool.file.copy.copyfiles">
+<code class="descclassname">pytool.file.copy.</code><code class="descname">copyfiles</code><span class="sig-paren">(</span><em>srcdir</em>, <em>dstdir</em>, <em>filenames</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.file.copy.copyfiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>copy files from srcdir to dstdir</p>
+<p>copy filenames specified files from srcdir to dstdir.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>{path str} --</strong><strong> [</strong><strong>source path</strong><strong>]</strong> (<em>srcdir</em>) – </li>
+<li><strong>{path str} --</strong><strong> [</strong><strong>destnation path</strong><strong>]</strong> (<em>dstdir</em>) – </li>
+<li><strong>{list} --</strong><strong> [</strong><strong>filenames to be copied</strong><strong>]</strong> (<em>filenames</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytool.file.list">
+<span id="pytool-file-list-module"></span><h2>pytool.file.list module<a class="headerlink" href="#module-pytool.file.list" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytool.file.list.getfile">
+<code class="descclassname">pytool.file.list.</code><code class="descname">getfile</code><span class="sig-paren">(</span><em>rootdir</em>, <em>names</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.file.list.getfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>[summary]</p>
+<p>[description]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>{</strong><strong>[</strong><strong>type</strong><strong>]</strong><strong>} --</strong><strong> [</strong><strong>description</strong><strong>]</strong> (<em>names</em>) – </li>
+<li><strong>{</strong><strong>[</strong><strong>type</strong><strong>]</strong><strong>} --</strong><strong> [</strong><strong>description</strong><strong>]</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">[type] – [description]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pytool.file.list.listxfile">
+<code class="descclassname">pytool.file.list.</code><code class="descname">listxfile</code><span class="sig-paren">(</span><em>rootdir</em>, <em>ext=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.file.list.listxfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>list file of ext</p>
+<p>[description]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{</strong><strong>[</strong><strong>type</strong><strong>]</strong><strong>} --</strong><strong> [</strong><strong>description</strong><strong>]</strong> (<em>rootdir</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>{</strong><strong>[</strong><strong>type</strong><strong>]</strong><strong>} --</strong><strong> [</strong><strong>description</strong><strong>] </strong><strong>(</strong><strong>default</strong> (<em>ext</em>) – {None})</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytool.file">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pytool.file" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pytool.math.html" class="btn btn-neutral float-right" title="pytool.math package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pytool.comm.html" class="btn btn-neutral" title="pytool.comm package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zhi Liu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pytool.radar package &mdash; PyTool 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PyTool 1.0 documentation" href="index.html"/>
+        <link rel="up" title="pytool package" href="pytool.html"/>
+        <link rel="next" title="pytool.show package" href="pytool.show.html"/>
+        <link rel="prev" title="pytool.nn package" href="pytool.nn.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyTool
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pytool</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pytool.html">pytool package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pytool.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pytool.box.html">pytool.box package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.comm.html">pytool.comm package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.file.html">pytool.file package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.math.html">pytool.math package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.nn.html">pytool.nn package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pytool.radar package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pytool.show.html">pytool.show package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pytool.html#module-pytool">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyTool</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">pytool</a> &raquo;</li>
+        
+          <li><a href="pytool.html">pytool package</a> &raquo;</li>
+        
+      <li>pytool.radar package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pytool.radar.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pytool-radar-package">
+<h1>pytool.radar package<a class="headerlink" href="#pytool-radar-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pytool.radar.display">
+<span id="pytool-radar-display-module"></span><h2>pytool.radar.display module<a class="headerlink" href="#module-pytool.radar.display" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytool.radar.display.display_mtd">
+<code class="descclassname">pytool.radar.display.</code><code class="descname">display_mtd</code><span class="sig-paren">(</span><em>data</em>, <em>dtype=None</em>, <em>SOF=None</em>, <em>EOF=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.radar.display.display_mtd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pytool.radar.display.radar_display">
+<code class="descclassname">pytool.radar.display.</code><code class="descname">radar_display</code><span class="sig-paren">(</span><em>data</em>, <em>dtype=None</em>, <em>SOF=None</em>, <em>EOF=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.radar.display.radar_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-pytool.radar.parse">
+<span id="pytool-radar-parse-module"></span><h2>pytool.radar.parse module<a class="headerlink" href="#module-pytool.radar.parse" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytool.radar.parse.adcdata">
+<code class="descclassname">pytool.radar.parse.</code><code class="descname">adcdata</code><span class="sig-paren">(</span><em>data=None</em>, <em>mod='IQ'</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.radar.parse.adcdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>[parse adc data]</p>
+<p>[parse adc data]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first simple">
+<li><strong>{</strong><strong>[</strong><strong>list</strong><strong>]</strong><strong>} --</strong><strong> [</strong><strong>description</strong><strong>] </strong><strong>(</strong><strong>default</strong> (<em>data</em>) – {None})</li>
+<li><strong>{str} --</strong><strong> [</strong><strong>description</strong><strong>] </strong><strong>(</strong><strong>default</strong> (<em>mod</em>) – {‘IQ’})</li>
+<li><strong>{bool} --</strong><strong> [</strong><strong>description</strong><strong>] </strong><strong>(</strong><strong>default</strong> (<em>verbose</em>) – {False})</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">[type] – [description]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytool.radar.protocol">
+<span id="pytool-radar-protocol-module"></span><h2>pytool.radar.protocol module<a class="headerlink" href="#module-pytool.radar.protocol" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytool.radar.protocol.findfrm">
+<code class="descclassname">pytool.radar.protocol.</code><code class="descname">findfrm</code><span class="sig-paren">(</span><em>RxData=None</em>, <em>dtype=None</em>, <em>SOF=None</em>, <em>EOF=None</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.radar.protocol.findfrm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pytool.radar.protocol.parsing">
+<code class="descclassname">pytool.radar.protocol.</code><code class="descname">parsing</code><span class="sig-paren">(</span><em>Frame=None</em>, <em>endian='Little'</em>, <em>SOF=None</em>, <em>EOF=None</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.radar.protocol.parsing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pytool.radar.protocol.unpack">
+<code class="descclassname">pytool.radar.protocol.</code><code class="descname">unpack</code><span class="sig-paren">(</span><em>data=None</em>, <em>dtype=None</em>, <em>endian='Little'</em>, <em>SOF=None</em>, <em>EOF=None</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.radar.protocol.unpack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-pytool.radar.show">
+<span id="pytool-radar-show-module"></span><h2>pytool.radar.show module<a class="headerlink" href="#module-pytool.radar.show" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pytool.radar.show.showana">
+<code class="descclassname">pytool.radar.show.</code><code class="descname">showana</code><span class="sig-paren">(</span><em>mti</em>, <em>cfarth</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.radar.show.showana" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pytool.radar.show.showiq">
+<code class="descclassname">pytool.radar.show.</code><code class="descname">showiq</code><span class="sig-paren">(</span><em>IQV</em>, <em>adcmod=None</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.radar.show.showiq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pytool.radar.show.showmtd">
+<code class="descclassname">pytool.radar.show.</code><code class="descname">showmtd</code><span class="sig-paren">(</span><em>mtd</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.radar.show.showmtd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pytool.radar.show.showmti">
+<code class="descclassname">pytool.radar.show.</code><code class="descname">showmti</code><span class="sig-paren">(</span><em>mti</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.radar.show.showmti" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pytool.radar.show.showtgecho">
+<code class="descclassname">pytool.radar.show.</code><code class="descname">showtgecho</code><span class="sig-paren">(</span><em>tgecho1</em>, <em>tgecho2</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.radar.show.showtgecho" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pytool.radar.show.showtgs">
+<code class="descclassname">pytool.radar.show.</code><code class="descname">showtgs</code><span class="sig-paren">(</span><em>tgs</em><span class="sig-paren">)</span><a class="headerlink" href="#pytool.radar.show.showtgs" title="Permalink to this definition">¶</a></dt>
+<dd><p>show targets</p>
+<p>tg = {‘r’: -1, ‘a’: 3.4e38, ‘v’: 3.4e38, ‘s’: -1}</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pytool.radar">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pytool.radar" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pytool.show.html" class="btn btn-neutral float-right" title="pytool.show package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pytool.nn.html" class="btn btn-neutral" title="pytool.nn package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zhi Liu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
