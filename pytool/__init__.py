@@ -5,15 +5,15 @@ from __future__ import absolute_import
 
 # __all__ = ['__version__']
 
-from . import file
+#from . import file
 from .file.copy import copyfile, copyfiles
-from .file.list import getfile, listxfile
+from .file.lookfile import getfile, listxfile
 from .file.binfile import loadbin
 
-from . import box
+#from . import box
 from .box.draw import drawbox
 
-from . import math
+#from . import math
 from .math.rand import randperm
 
 from .math.geometry.generate import circle1, circle2, ellipse, ellipse_surface
@@ -21,7 +21,7 @@ from .math.geometry.generate import circle1, circle2, ellipse, ellipse_surface
 from .math.matrix.eigen import gerschgorin
 
 
-from . import signal
+#from . import signal
 
 from .signal import signal
 from .signal.signal.correlation import corrmtx
@@ -41,12 +41,12 @@ from .comm.tcp import tcpsbuild, tcpcbuild, tcplink, tcprecv, tcpclose
 from .comm.seri import serialopen, serialread, serialwrite, serialclose
 
 
-from . import datasets
+#from . import datasets
 from .datasets.mnist import read_mnist
-from .datasets.mnist import read_cifar100, read_cifar10
+from .datasets.cifar import read_cifar100, read_cifar10
 from .datasets.batch import get_batches
 
-from . import nn
+#from . import nn
 from .nn.activations import linear, sigmoid, tanh, softplus, softsign, elu, relu, relu6, selu, crelu, leaky_relu
 
 from .show.plot import aplot, mesh

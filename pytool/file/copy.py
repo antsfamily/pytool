@@ -10,7 +10,7 @@ import shutil
 
 
 def copyfiles(srcdir, dstdir, filenames):
-    """copy files from srcdir to dstdir
+    r"""copy files from srcdir to dstdir
 
     copy filenames specified files from srcdir to dstdir.
 
@@ -27,7 +27,7 @@ def copyfiles(srcdir, dstdir, filenames):
 
 
 def copyfile(srcfile, dstfile):
-    """copy file from srcfile to dstfile
+    r"""copy file from srcfile to dstfile
 
     copy file from srcfile to dstfile.
 
@@ -37,6 +37,6 @@ def copyfile(srcfile, dstfile):
     """
     shutil.copyfile(srcfile, dstfile)
 
+
 if __name__ == '__main__':
     pass
-

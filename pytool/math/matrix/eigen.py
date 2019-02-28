@@ -3,7 +3,7 @@ import pytool
 
 
 def gerschgorin(A=None):
-    """compute gerschgorins of matrix A (row)
+    r"""compute gerschgorins of matrix A (row)
 
     .. math::
        |z - a_{ii}| \leq R_i  , R_i = R_i({\mathbf A}) = \sum_{j=1,j\neq i}^n |a_{ij}|
@@ -36,7 +36,7 @@ def gerschgorin(A=None):
 
 
 def gerschgorin2(A=None):
-    """compute gerschgorins of matrix A min(row, col)
+    r"""compute gerschgorins of matrix A min(row, col)
 
     .. math::
        |z - {a_{ii}}| \le {R_i},{R_i} = {R_i}({\bf{A}}) = \min \left( {\sum\limits_{j = 1,j \ne i}^n | {a_{ij}}|{\rm{,}}\;\sum\limits_{i = 1,i \ne j}^n | {a_{ij}}|} \right)

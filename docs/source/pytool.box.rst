@@ -1,11 +1,11 @@
-pytool.box package
-==================
+pytool\.box package
+===================
 
 Submodules
 ----------
 
-pytool.box.draw module
-----------------------
+pytool\.box\.draw module
+------------------------
 
 .. automodule:: pytool.box.draw
     :members:

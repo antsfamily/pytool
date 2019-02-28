@@ -1,35 +1,35 @@
-pytool.comm package
-===================
+pytool\.comm package
+====================
 
 Submodules
 ----------
 
-pytool.comm.SerialPort module
------------------------------
+pytool\.comm\.SerialPort module
+-------------------------------
 
 .. automodule:: pytool.comm.SerialPort
     :members:
     :undoc-members:
     :show-inheritance:
 
-pytool.comm.seri module
------------------------
+pytool\.comm\.seri module
+-------------------------
 
 .. automodule:: pytool.comm.seri
     :members:
     :undoc-members:
     :show-inheritance:
 
-pytool.comm.tcp module
-----------------------
+pytool\.comm\.tcp module
+------------------------
 
 .. automodule:: pytool.comm.tcp
     :members:
     :undoc-members:
     :show-inheritance:
 
-pytool.comm.udp module
-----------------------
+pytool\.comm\.udp module
+------------------------
 
 .. automodule:: pytool.comm.udp
     :members:

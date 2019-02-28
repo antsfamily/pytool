@@ -1,35 +1,35 @@
-pytool.radar package
-====================
+pytool\.radar package
+=====================
 
 Submodules
 ----------
 
-pytool.radar.display module
----------------------------
+pytool\.radar\.display module
+-----------------------------
 
 .. automodule:: pytool.radar.display
     :members:
     :undoc-members:
     :show-inheritance:
 
-pytool.radar.parse module
--------------------------
+pytool\.radar\.parse module
+---------------------------
 
 .. automodule:: pytool.radar.parse
     :members:
     :undoc-members:
     :show-inheritance:
 
-pytool.radar.protocol module
-----------------------------
+pytool\.radar\.protocol module
+------------------------------
 
 .. automodule:: pytool.radar.protocol
     :members:
     :undoc-members:
     :show-inheritance:
 
-pytool.radar.show module
-------------------------
+pytool\.radar\.show module
+--------------------------
 
 .. automodule:: pytool.radar.show
     :members:

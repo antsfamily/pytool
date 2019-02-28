@@ -4,6 +4,7 @@ import time
 import threading
 import pytool
 
+
 class SerialPort:
     message = ''
 
@@ -22,7 +23,7 @@ class SerialPort:
         self.port.close()
 
     def send_data(self):
-        data = input("请输入要发送的数据（非中文）并同时接收数据: ")
+        data = input(u"请输入要发送的数据（非中文）并同时接收数据: ")
         n = self.port.write((data + '\n').encode())
         return n
 
@@ -31,6 +32,7 @@ class SerialPort:
             # self.message = self.port.readline()
             # self.message = self.port.read(1024)
             self.message = self.port.read_all()
+
             # pytool.radar_display(self.message, dtype=None, SOF=None, EOF=None)
             pytool.display_mtd(self.message, dtype=None, SOF=None, EOF=None)
             # print(self.message)

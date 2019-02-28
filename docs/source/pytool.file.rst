@@ -1,27 +1,27 @@
-pytool.file package
-===================
+pytool\.file package
+====================
 
 Submodules
 ----------
 
-pytool.file.binfile module
---------------------------
+pytool\.file\.binfile module
+----------------------------
 
 .. automodule:: pytool.file.binfile
     :members:
     :undoc-members:
     :show-inheritance:
 
-pytool.file.copy module
------------------------
+pytool\.file\.copy module
+-------------------------
 
 .. automodule:: pytool.file.copy
     :members:
     :undoc-members:
     :show-inheritance:
 
-pytool.file.list module
------------------------
+pytool\.file\.list module
+-------------------------
 
 .. automodule:: pytool.file.list
     :members:

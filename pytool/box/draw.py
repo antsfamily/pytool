@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 
 def drawbox(img, bbox, clsl, mod='ltrb', colors=None):
-    """draw box o image img
+    r"""draw box o image img
 
     draw box o image img
 

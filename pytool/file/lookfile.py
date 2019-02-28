@@ -10,7 +10,7 @@ import shutil
 
 
 def getfile(rootdir, names):
-    """[summary]
+    r"""[summary]
 
     [description]
 
@@ -33,7 +33,7 @@ def getfile(rootdir, names):
 
 
 def listxfile(rootdir, ext=None):
-    """list file of ext
+    r"""list file of ext
 
     [description]
 

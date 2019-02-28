@@ -12,15 +12,15 @@ import binascii
 
 
 def loadbin(filename=None, dtype='i', dbsize=4, endian='Little', offsets=0, verbose=False):
-    """[load binary file]
+    r"""[load binary file]
 
     [load binary file]
 
     Keyword Arguments:
             filename {str} -- [description] (default: {None})
-            dtype {str} -- [c:char, b:schar, B:uchar, h:short, H:ushort, 
+            dtype {str} -- [c:char, b:schar, B:uchar, h:short, H:ushort,
                                             i:int, I:uint, l:long, L:ulong, q:longlong],
-                                            Q:ulonglong, f:float, d:double, s:char[], 
+                                            Q:ulonglong, f:float, d:double, s:char[],
                                             p:char[], P:void* (default: {'i'})
             dbsize {number} -- [bits of per number] (default: {4})
             offsets {number} -- [offsets index] (default: {0})
@@ -44,10 +44,10 @@ def loadbin(filename=None, dtype='i', dbsize=4, endian='Little', offsets=0, verb
             value = struct.unpack(dtype, data)[0]
             nums.append(value)
             if verbose is True:
-	            print(data)
-	            print(value)
+                print(data)
+                print(value)
     except:
-        print("End of file!")		
+        print("End of file!")
     f.close()
     return nums[offsets:len(nums)]
 

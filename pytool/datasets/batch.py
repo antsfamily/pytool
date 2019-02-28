@@ -12,7 +12,7 @@ import numpy as np
 
 
 def get_batches(inputs, targets, batchsize, shuffle=True):
-    """get batch data
+    r"""get batch data
 
     get batch data
 

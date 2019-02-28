@@ -1,11 +1,11 @@
-pytool.nn package
-=================
+pytool\.nn package
+==================
 
 Submodules
 ----------
 
-pytool.nn.activations module
-----------------------------
+pytool\.nn\.activations module
+------------------------------
 
 .. automodule:: pytool.nn.activations
     :members:

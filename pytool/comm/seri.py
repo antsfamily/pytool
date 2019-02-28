@@ -47,6 +47,7 @@ def serialwrite(serial, data):
 def serialclose(serial):
     serial.close()
 
+
 if __name__ == '__main__':
 
     com = 'COM7'
@@ -55,6 +56,7 @@ if __name__ == '__main__':
     timesleep = 0.005
 
     serial = serialopen(com=com, baudrate=baudrate, timeout=timeout)
+
     while True:
         data = serialread(serial, size=1024, timesleep=timesleep)
         if data != b'':

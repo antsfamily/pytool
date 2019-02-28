@@ -1,13 +1,29 @@
-pytool.show package
-===================
+pytool\.show package
+====================
 
 Submodules
 ----------
 
-pytool.show.plot module
------------------------
+pytool\.show\.geometry module
+-----------------------------
+
+.. automodule:: pytool.show.geometry
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pytool\.show\.plot module
+-------------------------
 
 .. automodule:: pytool.show.plot
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pytool\.show\.vectors module
+----------------------------
+
+.. automodule:: pytool.show.vectors
     :members:
     :undoc-members:
     :show-inheritance:
