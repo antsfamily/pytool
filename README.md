@@ -11,5 +11,7 @@ pip install pyserial opencv-python
 
 ## Generate docs
 
-
+```
+sphinx-apidoc -o ./docs/source/ ./
+```
 

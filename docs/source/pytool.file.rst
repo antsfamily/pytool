@@ -20,10 +20,10 @@ pytool\.file\.copy module
     :undoc-members:
     :show-inheritance:
 
-pytool\.file\.list module
--------------------------
+pytool\.file\.lookfile module
+-----------------------------
 
-.. automodule:: pytool.file.list
+.. automodule:: pytool.file.lookfile
     :members:
     :undoc-members:
     :show-inheritance:
