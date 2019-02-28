@@ -43,6 +43,7 @@ from .comm.seri import serialopen, serialread, serialwrite, serialclose
 
 from . import datasets
 from .datasets.mnist import read_mnist
+from .datasets.mnist import read_cifar100, read_cifar10
 from .datasets.batch import get_batches
 
 from . import nn

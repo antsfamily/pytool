@@ -5,23 +5,41 @@
 # @Link    : http://blog.csdn.net/enjoyyl
 # @Version : $1.0$
 
-
 import os
 import shutil
 import numpy as np
 from scipy.misc import imread
 
 
-def read_mnist(rootdir=None, dataset='train', scale=False, isonehot=False, verbose=False):
+def read_mnist(rootdir=None, dataset='train', scalevalue=None, isonehot=False, verbose=False):
+    r"""read mnist dataset
+
+    read mnist dataset
+
+    Keyword Arguments:
+        rootdir {str} -- dataset folder (default: {None})
+        dataset {str} -- dataset name (default: {'train'})
+        scalevalue {float} -- scale value (default: {None})
+        isonehot {bool} -- gen one hot label matrix (default: {False})
+        verbose {bool} -- show more info (default: {False})
+
+    Returns:
+        numpy array X  -- [N, 28, 28]
+        numpy array Y  -- [N, 10]
+
+    Raises:
+        ValueError -- dataset path not available
+    """
 
     cnt = -1
     nClass = 10
     print("reading dataset: " + dataset + "...")
     X = []
     Y = []
-    if ~os.path.exists(os.path.join(rootdir, dataset)):
-        raise ValueError(rootdir + dataset + " is not exist!")
-    for parent, dirnames, filenames in os.walk(rootdir + dataset):
+    datasetpath = os.path.join(rootdir, dataset)
+    if os.path.exists(datasetpath) is False:
+        raise ValueError(datasetpath + " is not exist!")
+    for parent, dirnames, filenames in os.walk(datasetpath):
         if cnt == -1:
             labels = dirnames
             if verbose:
@@ -52,8 +70,10 @@ def read_mnist(rootdir=None, dataset='train', scale=False, isonehot=False, verbo
     X = np.array(X)
     Y = np.array(Y)
 
-    if scale:
-        X = X / 255.0
+    if scalevalue:
+        X = X / scalevalue
+        print(np.min(X), np.max(X))
+        print("=============scaled!")
 
     if verbose:
         print(X.shape, Y.shape)
@@ -61,6 +81,9 @@ def read_mnist(rootdir=None, dataset='train', scale=False, isonehot=False, verbo
 
 
 if __name__ == '__main__':
-    rootdir = '../../data/mnist/'
+    rootdir = '/home/liu/ws/tf/study/tfstudy/data/mnist/'
     dataset = 'demo'
-    read_mnist(rootdir=rootdir, dataset=dataset, isonehot=True, verbose=True)
+    X, Y = read_mnist(rootdir=rootdir, dataset=dataset,
+                      isonehot=True, verbose=True)
+    print(X.shape, Y.shape)
+    print(Y)
