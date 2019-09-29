@@ -23,6 +23,7 @@ EOF = b'####'
 endian='Little'
 dtype = type(SOF)
 
+ptime = 0.001
 
 # plt.ion()
 # fig = plt.figure(0)
@@ -40,6 +41,7 @@ while True:
 
 	Frame = pytool.unpack(data=data, dtype=dtype, endian='Little', SOF=SOF, EOF=EOF)
 
+	# print(Frame['DATATYPE'])
 	if Frame['DATATYPE'] is UpDataType['UPDT_TGINFO']:
 		targets, nTGs = pytool.parsing(Frame=Frame, endian=endian, SOF=None, EOF=None)
 		pytool.showtgs(targets)
@@ -49,4 +51,7 @@ while True:
 	if Frame['DATATYPE'] is UpDataType['UPDT_ANALYSIS']:
 		mti, cfarth = pytool.parsing(Frame=Frame, endian=endian, SOF=None, EOF=None)
 		pytool.showana(mti, cfarth)
+	if Frame['DATATYPE'] is UpDataType['UPDT_DECISION']:
+		y = pytool.parsing(Frame=Frame, endian=endian, SOF=None, EOF=None)
+		pytool.showdec(y, ptime=ptime)
 udpclose(udps)

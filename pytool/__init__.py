@@ -38,8 +38,9 @@ from .signal.spectral.pmusic import pmusic, pseudospectrum, computespectrumrange
 
 from .radar.parse import adcdata
 from .radar.protocol import findfrm, unpack, parsing
-from .radar.show import showiq, showtgecho, showmti, showana, showmtd, showtgs
+from .radar.show import showiq, showtgecho, showmti, showmti2, showana, showmtd, showtgs, showdec
 from .radar.display import radar_display, display_mtd
+from .radar.moving import mti_init, slide_mti, accumulation
 
 from .comm.udp import udpbuild, udprecv, udpclose
 from .comm.tcp import tcpsbuild, tcpcbuild, tcplink, tcprecv, tcpclose

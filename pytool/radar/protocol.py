@@ -7,6 +7,7 @@
 
 import struct
 import pytool
+import numpy as np
 
 SOF = 0x00
 FRAMETYPE = 0x02
@@ -27,6 +28,7 @@ UpDataType = {
     'UPDT_DECISION': 0x05,
     'UPDT_DETESLTS': 0x06,
     'UPDT_TGINFO': 0x07,
+    # 'UPDT_TGINFO': 0x09,
     'UPDT_ANALYSIS': 0x08,
     'UPDT_LFT': 0x18,
     'UPDT_SYSCFG': 0x20,
@@ -159,11 +161,10 @@ def parsing(Frame=None, endian='Little', SOF=None, EOF=None, verbose=False):
         try:
             for i in range(1, Frame['DATALEN'] - 1, 2):
                 # print(i, Frame['DATALEN'], Frame['DATALOAD'][i:i + 2], Frame['DATALOAD'][i:i + 6])
-                # data.append(struct.unpack(endian + 'h', Frame['DATALOAD'][i:i
-                # + 2])[0]) ## short
+                # short
+                data.append(struct.unpack(endian + 'h', Frame['DATALOAD'][i:i+ 2])[0])
                 # ushort
-                data.append(
-                    struct.unpack(endian + 'H', Frame['DATALOAD'][i:i + 2])[0])
+                # data.append(struct.unpack(endian + 'H', Frame['DATALOAD'][i:i + 2])[0])
         except:
             if verbose is True:
                 print("error frame!")
@@ -179,6 +180,7 @@ def parsing(Frame=None, endian='Little', SOF=None, EOF=None, verbose=False):
 
     if Frame['DATATYPE'] is UpDataType['UPDT_TGINFO']:
         targets = []
+        # print(Frame['DATALOAD'])
         nTGs = struct.unpack(endian + 'B', Frame['DATALOAD'][0:1])[0]
         tg = {'r': -1, 'a': 3.4e38, 'v': 3.4e38, 's': -1}
         for i in range(0, nTGs, 1):
@@ -191,9 +193,11 @@ def parsing(Frame=None, endian='Little', SOF=None, EOF=None, verbose=False):
             tg['s'] = struct.unpack(
                 endian + 'f', Frame['DATALOAD'][16 * i + 13:16 * i + 17])[0]
             targets.append(tg)
+            print(tg)
 
         if verbose:
             pytool.showtgs(targets)
+        # print(targets)
         return targets, nTGs
 
     if Frame['DATATYPE'] is UpDataType['UPDT_TGECHO']:
@@ -207,7 +211,9 @@ def parsing(Frame=None, endian='Little', SOF=None, EOF=None, verbose=False):
             # print(i, Frame['DATALEN'])
             tgecho2.append(
                 struct.unpack(endian + 'f', Frame['DATALOAD'][i:i + 4])[0])
-        return tgecho1, tgecho2
+        x1 = np.array(tgecho1[0:len(tgecho1):2]) + 1j * np.array(tgecho1[1:len(tgecho1):2])
+        x2 = np.array(tgecho2[0:len(tgecho2):2]) + 1j * np.array(tgecho2[1:len(tgecho2):2])
+        return x1, x2
 
     if Frame['DATATYPE'] is UpDataType['UPDT_DECISION']:
         mti = []

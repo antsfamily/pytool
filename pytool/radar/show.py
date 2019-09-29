@@ -124,7 +124,47 @@ def showtgs(tgs):
     """
     nfract = 2
     nTGs = len(tgs)
-    for i in range(0, nTGs):
+    print("---%d targets" % nTGs)
+    for i in range(nTGs):
+        # print(tgs)
         print("===target " + str(i) + " of " + str(nTGs) + " targets.===")
         print('{r: ', round(tgs[i]['r'], nfract), ', a: ', round(tgs[i]['a'], nfract), ', v: ', round(
             tgs[i]['v'], nfract), ', s: ', round(tgs[i]['s'], nfract), '}')
+
+
+def showmti2(x, y1, y2, k, ptime=0.001, verbose=True):
+    """
+        x: current pulse data
+        y1: after filtering
+        y2: after accumulating
+        k: current pulse id
+    """
+
+    plt.clf()
+    plt.subplot(131)
+    plt.plot(np.abs(x))
+    plt.xlabel('Time/s')
+    plt.ylabel('Amplitude')
+    plt.title(str(k) + '-th pulse')
+    plt.grid()
+    plt.subplot(132)
+    plt.plot(np.abs(y1))
+    plt.xlabel('Time/s')
+    plt.ylabel('Amplitude')
+    plt.title('after filtering')
+    plt.grid()
+    plt.subplot(133)
+    plt.plot(np.abs(y2))
+    plt.xlabel('Time/s')
+    plt.ylabel('Amplitude')
+    plt.title('after accumulating')
+    plt.grid()
+    plt.tight_layout()
+
+    plt.pause(ptime)
+
+def showdec(y, ptime=0.0001):
+    plt.clf()
+    plt.plot(y)
+    plt.grid()
+    plt.pause(ptime)
