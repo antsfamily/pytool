@@ -28,7 +28,7 @@ UpDataType = {
     'UPDT_DECISION': 0x05,
     'UPDT_DETESLTS': 0x06,
     'UPDT_TGINFO': 0x07,
-    # 'UPDT_TGINFO': 0x09,
+    'UPDT_TGINFOORIGECHO': 0x09,
     'UPDT_ANALYSIS': 0x08,
     'UPDT_LFT': 0x18,
     'UPDT_SYSCFG': 0x20,
@@ -235,3 +235,42 @@ def parsing(Frame=None, endian='Little', SOF=None, EOF=None, verbose=False):
             cfarth.append(
                 struct.unpack(endian + 'f', Frame['DATALOAD'][i:i + 4])[0])
         return mti, cfarth
+
+    if Frame['DATATYPE'] is UpDataType['UPDT_TGINFOORIGECHO']:
+        targets = []
+        nTGs = struct.unpack(endian + 'B', Frame['DATALOAD'][0:1])[0]
+        tg = {'r': -1, 'a': 3.4e38, 'v': 3.4e38, 's': -1}
+        for i in range(0, nTGs, 1):
+            tg['r'] = struct.unpack(
+                endian + 'f', Frame['DATALOAD'][16 * i + 1:16 * i + 5])[0]
+            tg['v'] = struct.unpack(
+                endian + 'f', Frame['DATALOAD'][16 * i + 5:16 * i + 9])[0]
+            tg['a'] = struct.unpack(
+                endian + 'f', Frame['DATALOAD'][16 * i + 9:16 * i + 13])[0]
+            tg['s'] = struct.unpack(
+                endian + 'f', Frame['DATALOAD'][16 * i + 13:16 * i + 17])[0]
+            targets.append(tg)
+            print(tg)
+
+        data = []
+        eidx = nTGs * len(Target) + 1
+        adcmod = struct.unpack(endian + 'B', Frame['DATALOAD'][eidx:eidx+1])[0]
+        try:
+            for i in range(1, Frame['DATALEN'] - 1 - eidx, 2):
+                # print(i, Frame['DATALEN'], Frame['DATALOAD'][eidx+i:eidx+i + 2], Frame['DATALOAD'][eidx+i:eidx+i + 6])
+                # short
+                data.append(struct.unpack(endian + 'h', Frame['DATALOAD'][eidx+i:eidx+i+ 2])[0])
+                # ushort
+                # data.append(struct.unpack(endian + 'H', Frame['DATALOAD'][eidx+i:eidx+i + 2])[0])
+        except:
+            if verbose is True:
+                print("error frame!")
+            return None, None
+        if adcmod is 0x13:
+            data = pytool.adcdata(
+                data=data, mod='IQVIQV', verbose=False)
+        if adcmod is 0x03:
+            # print(adcmod)
+            data = pytool.adcdata(
+                data=data, mod='IQIQ', verbose=False)
+        return targets, nTGs, data, adcmod

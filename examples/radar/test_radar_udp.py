@@ -36,6 +36,7 @@ while True:
 	# print(data)
 	s, idxHead, idxTail = pytool.findfrm(data, dtype=dtype, SOF=SOF, EOF=EOF)
 
+	# print(s)
 	# print(type(data), s, idxHead, idxTail)
 	data = data[idxHead:idxTail+len(EOF)]
 
@@ -54,4 +55,8 @@ while True:
 	if Frame['DATATYPE'] is UpDataType['UPDT_DECISION']:
 		y = pytool.parsing(Frame=Frame, endian=endian, SOF=None, EOF=None)
 		pytool.showdec(y, ptime=ptime)
+	if Frame['DATATYPE'] is UpDataType['UPDT_TGINFOORIGECHO']:
+		targets, nTGs, IQV, adcmod = pytool.parsing(Frame=Frame, endian=endian, SOF=None, EOF=None)
+		pytool.showtgs(targets)
+		pytool.showiq(IQV, adcmod)
 udpclose(udps)
